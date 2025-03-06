@@ -82,12 +82,14 @@ function clearCanvas() {
 }
 
 function saveSignature() {
-    const image = canvas.toDataURL('image/png');
+    // Save the current canvas state as an image, maintaining transparency.
+    const image = canvas.toDataURL('image/png'); // 'image/png' retains transparency
     const link = document.createElement('a');
     link.href = image;
     link.download = 'signature.png';
     link.click();
 }
+
 
 function updatePenSize() {
     ctx.lineWidth = penSizeInput.value;
