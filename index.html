@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signature Pad</title>
+    <link rel="stylesheet" href="./index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Signature Pad</h1>
+        <p>Draw your signature below:</p>
+        <div class="signature-pad">
+            <canvas id="signatureCanvas"></canvas>
+            <div class="controls">
+                <div class="control-group">
+                    <label for="penSize">Pen Size:</label>
+                    <input type="range" id="penSize" min="1" max="20" value="2">
+                    <span id="penSizeValue">2</span>
+                </div>
+                <div class="control-group">
+                    <label for="penColor">Pen Color:</label>
+                    <input type="color" id="penColor" value="#000000">
+                </div>
+                <button id="clearButton" class="btn clear">Clear Canvas</button>
+                <button id="saveButton" class="btn save">Save Signature</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,133 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.container {
+    text-align: center;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* Signature Canvas */
+.signature-pad {
+    margin: 0 auto;
+}
+
+canvas {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    cursor: crosshair;
+    background: #f9f9f9;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.3s ease;
+}
+
+canvas:hover {
+    border-color: #3498db;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+label {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+input[type="range"] {
+    width: 100px;
+    cursor: pointer;
+}
+
+input[type="color"] {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#penSizeValue {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn.clear {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.btn.clear:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.btn.save {
+    background: #3498db;
+    color: #fff;
+}
+
+.btn.save:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .controls {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
