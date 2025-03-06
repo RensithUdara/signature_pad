@@ -25,14 +25,34 @@
                     <label for="penColor">Pen Color:</label>
                     <input type="color" id="penColor" value="#000000">
                 </div>
-                <button id="clearButton" class="btn clear">Clear Canvas</button>
-                <button id="saveButton" class="btn save">Save Signature</button>
-                <button id="undoButton" class="btn undo">Undo</button>
-                <button id="redoButton" class="btn redo">Redo</button>
+                <div class="control-group">
+                    <label for="brushType">Brush Type:</label>
+                    <select id="brushType">
+                        <option value="pen">Pen</option>
+                        <option value="highlighter">Highlighter</option>
+                        <option value="marker">Marker</option>
+                    </select>
+                </div>
+                <button id="clearButton" class="btn clear">
+                    <i class="fas fa-eraser"></i> Clear Canvas
+                </button>
+                <button id="saveButton" class="btn save">
+                    <i class="fas fa-download"></i> Save Signature
+                </button>
+                <button id="undoButton" class="btn undo">
+                    <i class="fas fa-undo"></i> Undo
+                </button>
+                <button id="redoButton" class="btn redo">
+                    <i class="fas fa-redo"></i> Redo
+                </button>
+                <button id="resetButton" class="btn reset">
+                    <i class="fas fa-sync-alt"></i> Reset Canvas
+                </button>
             </div>
         </div>
     </div>
 
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="./index.js"></script>
 </body>
 
