@@ -4,17 +4,20 @@ const clearButton = document.getElementById('clearButton');
 const saveButton = document.getElementById('saveButton');
 const undoButton = document.getElementById('undoButton');
 const redoButton = document.getElementById('redoButton');
+const resetButton = document.getElementById('resetButton');
 const penSizeInput = document.getElementById('penSize');
 const penColorInput = document.getElementById('penColor');
 const penSizeValue = document.getElementById('penSizeValue');
+const brushTypeSelect = document.getElementById('brushType');
 
 let isDrawing = false;
 let drawHistory = [];
 let redoHistory = [];
+let brushType = 'pen';
 
 // Set canvas size
 canvas.width = 500;
-canvas.height = 200;
+canvas.height = 250;
 
 // Set initial drawing properties
 ctx.strokeStyle = penColorInput.value;
@@ -25,19 +28,12 @@ ctx.lineJoin = 'round';
 // Function to get the correct mouse position
 function getPosition(e) {
     const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;  // Scale for canvas width
-    const scaleY = canvas.height / rect.height; // Scale for canvas height
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
     return {
         x: (e.clientX - rect.left) * scaleX,
         y: (e.clientY - rect.top) * scaleY
     };
-}
-
-// Save the state before drawing to enable undo
-function saveState() {
-    drawHistory.push(canvas.toDataURL());
-    if (drawHistory.length > 5) drawHistory.shift(); // Limit the history stack
-    redoHistory = []; // Clear redo stack when a new action is performed
 }
 
 // Event listeners for drawing
@@ -58,7 +54,6 @@ canvas.addEventListener('mousemove', (e) => {
 canvas.addEventListener('mouseup', () => {
     isDrawing = false;
     ctx.closePath();
-    saveState();
 });
 
 canvas.addEventListener('mouseout', () => {
@@ -66,15 +61,12 @@ canvas.addEventListener('mouseout', () => {
     ctx.closePath();
 });
 
-// Clear canvas
-clearButton.addEventListener('click', clearCanvas);
-
-// Save signature
-saveButton.addEventListener('click', saveSignature);
-
-// Undo and Redo functionality
+// Undo & Redo
 undoButton.addEventListener('click', undo);
 redoButton.addEventListener('click', redo);
+
+// Reset canvas
+resetButton.addEventListener('click', resetCanvas);
 
 // Update pen size
 penSizeInput.addEventListener('input', updatePenSize);
@@ -82,9 +74,11 @@ penSizeInput.addEventListener('input', updatePenSize);
 // Update pen color
 penColorInput.addEventListener('input', updatePenColor);
 
+// Update brush type
+brushTypeSelect.addEventListener('change', updateBrushType);
+
 function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    saveState();
 }
 
 function saveSignature() {
@@ -102,6 +96,15 @@ function updatePenSize() {
 
 function updatePenColor() {
     ctx.strokeStyle = penColorInput.value;
+}
+
+function updateBrushType() {
+    brushType = brushTypeSelect.value;
+    if (brushType === 'highlighter') {
+        ctx.globalAlpha = 0.3;  // Make strokes more translucent for highlighter effect
+    } else {
+        ctx.globalAlpha = 1;
+    }
 }
 
 function undo() {
@@ -127,4 +130,10 @@ function redo() {
             ctx.drawImage(img, 0, 0);
         };
     }
+}
+
+function resetCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawHistory = [];
+    redoHistory = [];
 }
