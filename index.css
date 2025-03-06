@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    background: linear-gradient(135deg, #e1e8f0, #f4f9fc);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,20 +14,21 @@ body {
     text-align: center;
     background: #fff;
     padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    max-width: 650px;
     width: 100%;
+    animation: fadeIn 1s ease-out;
 }
 
 h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
     color: #2c3e50;
 }
 
 p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #666;
     margin-bottom: 1.5rem;
 }
@@ -38,19 +39,19 @@ p {
 }
 
 canvas {
-    border: 3px dashed #ccc;
+    border: 3px solid #3498db;
     border-radius: 10px;
     cursor: crosshair;
-    background: #f9f9f9;
+    background: #f4f9fc;
     width: 100%;
-    height: 200px;
+    height: 250px;
     margin-bottom: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease;
 }
 
 canvas:hover {
-    border-color: #3498db;
+    border-color: #2980b9;
 }
 
 /* Controls */
@@ -73,18 +74,19 @@ label {
     color: #555;
 }
 
-input[type="range"] {
-    width: 100px;
+input[type="range"],
+select,
+input[type="color"] {
     cursor: pointer;
+}
+
+input[type="range"] {
+    width: 120px;
 }
 
 input[type="color"] {
     width: 40px;
     height: 40px;
-    padding: 0;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 #penSizeValue {
@@ -100,6 +102,13 @@ input[type="color"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn i {
+    font-size: 1.1rem;
 }
 
 .btn.clear {
@@ -142,6 +151,16 @@ input[type="color"] {
     transform: translateY(-2px);
 }
 
+.btn.reset {
+    background: #95a5a6;
+    color: #fff;
+}
+
+.btn.reset:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+}
+
 /* Responsive Design */
 @media (max-width: 480px) {
     .controls {
@@ -150,5 +169,15 @@ input[type="color"] {
 
     .btn {
         width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
